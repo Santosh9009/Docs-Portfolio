@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 // Define the structure of searchable content
 interface SearchableItem {
@@ -25,26 +26,56 @@ interface SearchableItem {
 // Sample searchable content - you can fetch this from your API
 const searchableContent: SearchableItem[] = [
     {
-        title: "Portfolio Site",
-        description: "A full-featured Threads app clone with MongoDB and Next.js.",
+        title: "About Me",
+        description: "Full Stack Developer",
+        type: "contact",
+        href: "/about",
+    },
+    {
+        title: "Medium-Clone-Blogging-website",
+        description: "Developed a full-featured platform with a responsive React.js frontend",
         type: "project",
         href: "/projects",
     },
     {
-        title: "VSCode Portfolio",
-        description: "Interactive portfolio inspired by VSCode UI.",
+        title: "Realtime Code Editor using Docker",
+        description: "Enabled real-time collaboration with live updates",
         type: "project",
         href: "/projects",
     },
     {
-        title: "React",
-        description: "Frontend Development",
+        title: "Threads Clone",
+        description: "Created a functional clone with user authentication, posting, and commenting features",
+        type: "project",
+        href: "/projects",
+    },
+    {
+        title: "Frontend Development",
+        description: "HTML, CSS, Tailwind CSS, JavaScript, React.js, Next.js",
         type: "skill",
         href: "/skills",
     },
     {
-        title: "Node.js",
-        description: "Backend Development",
+        title: "Backend Development",
+        description: "Node.js, Express",
+        type: "skill",
+        href: "/skills",
+    },
+    {
+        title: "Databases",
+        description: "PostgreSQL, MongoDB, Redis",
+        type: "skill",
+        href: "/skills",
+    },
+    {
+        title: "DevOps",
+        description: "Kubernetes, Docker, Kafka, AWS, Git, GitHub",
+        type: "skill",
+        href: "/skills",
+    },
+    {
+        title: "Programming Languages",
+        description: "JavaScript, Java, C, Python",
         type: "skill",
         href: "/skills",
     },
@@ -91,6 +122,7 @@ export function SearchCommand() {
                 </kbd>
             </Button>
             <CommandDialog open={open} onOpenChange={setOpen}>
+                <DialogTitle></DialogTitle>
                 <CommandInput placeholder="Type to search..." />
                 <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
@@ -134,4 +166,4 @@ export function SearchCommand() {
             </CommandDialog>
         </>
     );
-} 
+}

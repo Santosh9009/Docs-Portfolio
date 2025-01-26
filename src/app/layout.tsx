@@ -13,26 +13,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" suppressHydrationWarning>
             <body className="min-h-screen bg-background text-foreground">
-            <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-                <div className="flex flex-col min-h-screen">
-                    {/* Header */}
-                    <Header />
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <div className="flex flex-col min-h-screen">
+                        {/* Header */}
+                        <Header />
 
-                    <div className="flex flex-1">
-                        {/* Sidebar */}
-                        <Sidebar />
+                        <div className="flex flex-1">
+                            {/* Sidebar */}
+                            <Sidebar />
 
-                        {/* Main Content */}
-                        <main className="flex-1 p-6 lg:p-8 max-w-4xl mx-auto">
-                            {children}
-                        </main>
+                            {/* Main Content */}
+                            <main className="flex-1 p-6 lg:p-8 max-w-4xl mx-auto mt-10">
+                                {children}
+                            </main>
+                        </div>
                     </div>
-                </div>
                 </ThemeProvider>
             </body>
         </html>

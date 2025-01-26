@@ -7,13 +7,14 @@ import { Button } from "@/components/ui/button";
 import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
 import { Menu, X, Home, User, Briefcase, Code2, Mail, FileCode2 } from "lucide-react";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
 
     const links = [
-        { href: "/", label: "Home", icon: Home },
+        { href: "/", label: "Get Started", icon: Home },
         { href: "/about", label: "About", icon: User },
         { href: "/projects", label: "Projects", icon: Code2 },
         { href: "/skills", label: "Skills", icon: Briefcase },
@@ -22,7 +23,7 @@ const Sidebar = () => {
     ];
 
     const NavContent = () => (
-        <ul className="space-y-2">
+        <ul className="space-y-2 pt-5">
             {links.map(({ href, label, icon: Icon }) => {
                 const isActive = pathname === href;
                 return (
@@ -46,7 +47,7 @@ const Sidebar = () => {
     );
 
     return (
-        <>
+        <div className="">
             {/* Mobile Menu Drawer */}
             <Drawer open={isOpen} onOpenChange={setIsOpen}>
                 <DrawerTrigger asChild>
@@ -59,6 +60,7 @@ const Sidebar = () => {
                         {isOpen ? <X className="h-5 w-5"/> : <Menu className="h-5 w-5"/>}
                     </Button>
                 </DrawerTrigger>
+                <DialogTitle></DialogTitle>
                 <DrawerContent>
                     <DrawerHeader className="border-b pb-2 mb-2">
                         <h3 className="font-semibold text-lg">Menu</h3>
@@ -92,7 +94,7 @@ const Sidebar = () => {
 
             {/* Sidebar Spacing for Content */}
             <div className="hidden lg:block w-64" />
-        </>
+        </div>
     );
 };
 

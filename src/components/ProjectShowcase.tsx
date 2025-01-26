@@ -65,12 +65,12 @@ export function ProjectShowcase() {
                                 <div className="flex gap-2">
                                     {project.github && (
                                         <Link href={project.github} target="_blank">
-                                            <Github className="h-5 w-5 hover:text-primary transition-colors" />
+                                            <Github className="h-5 w-5 hover:text-[var(--color-primary)] transition-colors" />
                                         </Link>
                                     )}
                                     {project.demo && (
                                         <Link href={project.demo} target="_blank">
-                                            <Globe className="h-5 w-5 hover:text-primary transition-colors" />
+                                            <Globe className="h-5 w-5 hover:text-[var(--color-primary)] transition-colors" />
                                         </Link>
                                     )}
                                 </div>
@@ -91,4 +91,4 @@ export function ProjectShowcase() {
             ))}
         </div>
     );
-} 
+}

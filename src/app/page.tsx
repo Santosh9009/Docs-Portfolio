@@ -1,41 +1,11 @@
 import CodeBlock from "../components/CodeBlock";
-import { ArrowRight, Book, Code2, Terminal } from "lucide-react";
+import { ArrowRight, Code2, Terminal, Book } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { endpoints } from "./utils/Apidata";
 
 export default function ApiDocs() {
-    const endpoints = [
-        {
-            method: "GET",
-            path: "/about",
-            description: "Fetches information about me.",
-            exampleResponse: {
-                name: "John Doe",
-                role: "Full Stack Developer",
-            },
-        },
-        {
-            method: "GET",
-            path: "/projects",
-            description: "Fetches a list of my projects.",
-            exampleResponse: [
-                { id: 1, name: "Portfolio Site", description: "My personal portfolio." },
-                { id: 2, name: "E-commerce App", description: "A full-stack e-commerce app." },
-            ],
-        },
-        {
-            method: "GET",
-            path: "/contact",
-            description: "Fetches contact information.",
-            exampleResponse: {
-                email: "john.doe@example.com",
-                github: "github.com/johndoe",
-                linkedin: "linkedin.com/in/johndoe",
-            },
-        },
-    ];
-
     const features = [
         {
             icon: Code2,
@@ -61,37 +31,37 @@ export default function ApiDocs() {
     ];
 
     return (
-        <div className="space-y-8">
+        <div className="container mx-auto px-4 space-y-8">
             {/* Hero Section */}
-            <section className="space-y-4">
-                <h1 className="text-4xl font-bold">Welcome to My Portfolio</h1>
-                <p className="text-xl text-muted-foreground">
+            <section className="text-center space-y-4">
+                <h1 className="text-2xl md:text-4xl font-bold">Welcome to My Portfolio</h1>
+                <p className="text-base md:text-xl text-muted-foreground">
                     Full Stack Developer specializing in modern web technologies
                 </p>
-                <div className="flex gap-4">
-                    <Button asChild>
+                <div className="flex justify-center gap-4">
+                    <Button asChild size="sm">
                         <Link href="/projects">
                             View Projects <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                     </Button>
-                    <Button variant="outline" asChild>
+                    <Button variant="outline" asChild size="sm">
                         <Link href="/contact">Contact Me</Link>
                     </Button>
                 </div>
             </section>
 
             {/* Features Section */}
-            <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {features.map((feature) => {
                     const Icon = feature.icon;
                     return (
-                        <Card key={feature.title}>
-                            <CardHeader>
-                                <Icon className="h-10 w-10 text-primary" />
-                                <CardTitle>{feature.title}</CardTitle>
+                        <Card key={feature.title} className="w-full">
+                            <CardHeader className="items-center text-center">
+                                <Icon className="h-8 w-8 text-primary" />
+                                <CardTitle className="text-base md:text-xl">{feature.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-muted-foreground">{feature.description}</p>
+                                <p className="text-sm text-muted-foreground text-center">{feature.description}</p>
                             </CardContent>
                         </Card>
                     );
@@ -100,14 +70,14 @@ export default function ApiDocs() {
 
             {/* Quick Links */}
             <section>
-                <h2 className="text-2xl font-bold mb-4">Quick Links</h2>
+                <h2 className="text-xl md:text-2xl font-bold mb-4 text-center md:text-left">Quick Links</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {quickLinks.map((link) => (
-                        <Link href={link.href} key={link.title}>
-                            <Card className="hover:bg-muted/50 transition-colors">
+                        <Link href={link.href} key={link.title} className="w-full">
+                            <Card className="hover:bg-muted/50 transition-colors w-full">
                                 <CardHeader>
-                                    <CardTitle>{link.title}</CardTitle>
-                                    <CardDescription>{link.description}</CardDescription>
+                                    <CardTitle className="text-base md:text-xl">{link.title}</CardTitle>
+                                    <CardDescription className="text-sm">{link.description}</CardDescription>
                                 </CardHeader>
                             </Card>
                         </Link>
@@ -116,20 +86,25 @@ export default function ApiDocs() {
             </section>
 
             {/* API Documentation Section */}
-            <section className="flex-shrink">
-                <h1 className="text-2xl font-bold mb-4">API Documentation</h1>
-                <ul className="space-y-6">
-                    {endpoints.map((endpoint, index) => (
-                        <li key={index} className="p-4 bg-gray-100 rounded">
-                            <p>
-                                <strong>{endpoint.method}</strong> {endpoint.path}
-                            </p>
-                            <p className="text-sm text-gray-600">{endpoint.description}</p>
-                            <CodeBlock language="json" code={JSON.stringify(endpoint.exampleResponse, null, 2)} />
-                        </li>
+            {/* <section className="max-w-xs md:max-w-full">
+                <h2 className="text-xl md:text-2xl font-bold mb-4">API Documentation</h2>
+                <div className="space-y-4">
+                    {endpoints.map((endpoint) => (
+                        <Card key={endpoint.id} className="w-full">
+                            <CardContent className="p-4">
+                                <p className="mb-2">
+                                    <strong>{endpoint.method}</strong> {endpoint.path}
+                                </p>
+                                <p className="text-sm text-muted-foreground mb-2">{endpoint.description}</p>
+                                    <CodeBlock 
+                                        language="json" 
+                                        code={JSON.stringify(endpoint.responses[200].example, null, 2)} 
+                                    />
+                            </CardContent>
+                        </Card>
                     ))}
-                </ul>
-            </section>
+                </div>
+            </section> */}
         </div>
     );
 }
